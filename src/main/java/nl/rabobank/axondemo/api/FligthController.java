@@ -31,7 +31,7 @@ public class FligthController {
 
         try {
             Object resultSync = commandGateway.sendAndWait(
-                    new ScheduleFlightCommand(scheduleFlightRequest.getId()), 500, TimeUnit.MILLISECONDS
+                    new ScheduleFlightCommand(scheduleFlightRequest.getId(), scheduleFlightRequest.getFlightId()), 500, TimeUnit.MILLISECONDS
                                                           );
             return HttpStatus.OK;
         } catch (Exception e) {

@@ -14,4 +14,7 @@ public final class ScheduleFlightRequest {
     @JsonProperty("id")
     private String id;
 
+    @JsonProperty("flightId")
+    private String flightId;
+
 }
