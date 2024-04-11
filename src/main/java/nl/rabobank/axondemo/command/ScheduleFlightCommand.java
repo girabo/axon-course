@@ -9,4 +9,6 @@ public class ScheduleFlightCommand {
 
     @TargetAggregateIdentifier
     String id;
+
+    String flightId;
 }
