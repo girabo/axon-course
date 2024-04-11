@@ -1,0 +1,5 @@
+---
+# Active the dev, no-cloud and vault-local profiles by default
+spring:
+  application:
+    name: axon-demo

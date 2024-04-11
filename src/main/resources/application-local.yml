@@ -1,0 +1,19 @@
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.cloud: DEBUG
+    org.springframework.ws.client.MessageTracing.received: TRACE
+    org.springframework.ws.client.MessageTracing.sent: TRACE
+    org.springframework.ws.server.MessageTracing.received: TRACE
+    org.springframework.ws.server.MessageTracing.sent: TRACE
+    nl.rabobank.its.wonen.ms.picservice: DEBUG
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}) %clr(%5p) %clr([%X{invocationId}]){cyan} ${PID:-} --- [%-15.15thread] %-50.50logger{39} : %replace(%msg %rEx{10}){'[\r\n]+', '\u2028'}%nopex%n"
+
+#axon:
+#  axonserver:
+#    enabled: false
+#  serializer:
+#    events: jackson
+#    messages: jackson
+#    general: jackson
