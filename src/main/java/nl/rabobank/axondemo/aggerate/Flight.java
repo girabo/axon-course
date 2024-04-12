@@ -19,7 +19,7 @@ public class Flight {
     private String aggregateId;
 
     @CommandHandler
-    public void handle(ScheduleFlightCommand command) {
+    public Flight(ScheduleFlightCommand command) {
         apply(new FlightScheduledEvent(command.getId(), command.getFlightId()));
     }
 
