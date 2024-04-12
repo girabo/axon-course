@@ -5,6 +5,8 @@ import java.util.concurrent.TimeUnit;
 import nl.rabobank.axondemo.command.ScheduleFlightCommand;
 import nl.rabobank.axondemo.model.ScheduleFlightRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.config.Configuration;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class FligthController {
+    private static final Logger LOGGER = LogManager.getLogger(FligthController.class);
 
     private final Configuration configuration;
 
@@ -30,12 +33,11 @@ public class FligthController {
         CommandGateway commandGateway = configuration.commandGateway();
 
         try {
-            Object resultSync = commandGateway.sendAndWait(
-                    new ScheduleFlightCommand(scheduleFlightRequest.getId(), scheduleFlightRequest.getFlightId()), 500, TimeUnit.MILLISECONDS
-                                                          );
+            LOGGER.info("API - Flight scheduled request received: {}", scheduleFlightRequest.toString());
+            commandGateway.sendAndWait(new ScheduleFlightCommand(scheduleFlightRequest.getId(), scheduleFlightRequest.getFlightId()), 500, TimeUnit.MILLISECONDS);
             return HttpStatus.OK;
         } catch (Exception e) {
-            System.out.println("Error: " + e);
+            LOGGER.error("Error: {}", e.toString());
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
     }
