@@ -12,8 +12,8 @@ logging:
 
 axon:
   axonserver:
-    enabled: false
-  serializer:
-    events: jackson
-    messages: jackson
-    general: jackson
+    enabled: true
+#  serializer:
+#    events: jackson
+#    messages: jackson
+#    general: jackson
